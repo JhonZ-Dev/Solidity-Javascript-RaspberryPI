@@ -4,6 +4,9 @@ pragma solidity ^0.8.6;
 //primer contrato
 contract TasksContract {
     uint public taskCounter = 0;
+    constructor(){
+        createTask("ejemploID", "hayquehaceralgo");
+    }
     struct Task{
         uint256 id;
         string title;
@@ -15,9 +18,13 @@ contract TasksContract {
 
     //funciones para interactuar con los datos;
     function createTask(string memory _title,string memory _description) public{
-        tasks[taskCounter] = Task(taskCounter,_title,_description,false, block.timestamp);
         taskCounter++;
+        tasks[taskCounter] = Task(taskCounter,_title,_description,false, block.timestamp);
     }
 
-    //function toggleDone(){}
+    function toggleDone(uint _id) public{
+       Task memory _task = tasks[_id];
+       _task.done = !_task.done;
+       tasks[_id] = _task;
+    }
 }
