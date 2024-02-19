@@ -2,7 +2,7 @@
 pragma solidity ^0.8.6;
 
 //primer contrato
-contract TaskContract {
+contract TasksContract {
     uint taskCounter = 0;
     struct Task{
         uint256 id;
