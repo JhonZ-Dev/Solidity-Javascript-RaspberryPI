@@ -2,3 +2,13 @@ body {
     background: #0A192F;
     color: #fff;
   }
+
+  #title{
+    background-color: rgb(205, 238, 18);
+    color: black;
+  }
+
+  #description{
+    background-color: rgb(205, 238, 18);
+    color: black;
+  }

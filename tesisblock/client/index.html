@@ -17,7 +17,7 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-4">
-          <div class="card card-body bg-dark rounded-0 mb-4">
+          <div class="card card-body  rounded-0 mb-4">
             <h1>
               <span class="material-icons"> grid_view </span>
               DTasksapp
@@ -30,20 +30,21 @@
             <span id="account"></span>
           </div>
 
-          <form id="taskForm" class="card card-body bg-dark">
+          <form id="taskForm" class="card card-body" style="color: yellow;">
             <h4>Save a Task</h4>
             <input
               type="text"
               id="title"
-              class="form-control bg-dark border-0 rounded-0 text-light my-4"
-              placeholder="Write a Task"
+              class="form-control border-0 rounded-0 text-light my-4"
+              placeholder="Escriba una tarea"
               autofocus
+              
             />
             <textarea
               id="description"
               rows="2"
-              class="form-control bg-dark border-0 rounded-0 text-light my-4"
-              placeholder="I have to do ...."
+              class="form-control border-0 rounded-0 text-light my-4"
+              placeholder="description"
             ></textarea>
             <button class="btn btn-primary">save</button>
           </form>

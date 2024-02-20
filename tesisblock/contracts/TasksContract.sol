@@ -3,7 +3,7 @@ pragma solidity ^0.8.6;
 
 //primer contrato
 contract TasksContract {
-    uint public taskCounter = 0;
+    uint public tasksCounter = 0;
     constructor(){
         createTask("ejemploID", "hayquehaceralgo");
     }
@@ -26,9 +26,9 @@ contract TasksContract {
 
     //funciones para interactuar con los datos;
     function createTask(string memory _title,string memory _description) public{
-        taskCounter++;
-        tasks[taskCounter] = Task(taskCounter,_title,_description,false, block.timestamp);
-        emit TaskCreated(taskCounter,_title, _description, false, block.timestamp);
+        tasksCounter++;
+        tasks[tasksCounter] = Task(tasksCounter,_title,_description,false, block.timestamp);
+        emit TaskCreated(tasksCounter,_title, _description, false, block.timestamp);
     }
 
     function toggleDone(uint _id) public{
