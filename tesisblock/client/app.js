@@ -96,4 +96,18 @@ App = {
       });
       window.location.reload();
     },
+    searchTaskById: async () => {
+      try {
+          const taskId = document.getElementById("taskId").value;
+          const taskExists = await App.tasksContract.taskExists(taskId);
+          if (taskExists) {
+              alert("La tarea con el ID " + taskId + " existe.");
+          } else {
+              alert("La tarea con el ID " + taskId + " no existe.");
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  },
+  
   };
