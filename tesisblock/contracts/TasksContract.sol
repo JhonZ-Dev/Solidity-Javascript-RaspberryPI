@@ -37,4 +37,13 @@ contract TasksContract {
        tasks[_id] = _task;
        emit TaskToggleDone(_id, _task.done);
     }
+    function taskExists(string memory _idTarjeta) public view returns (bool) {
+    for (uint i = 1; i <= tasksCounter; i++) {
+        if (keccak256(bytes(tasks[i].idTarjeta)) == keccak256(bytes(_idTarjeta))) {
+            return true;
+        }
+    }
+    return false;
+}
+
 }
