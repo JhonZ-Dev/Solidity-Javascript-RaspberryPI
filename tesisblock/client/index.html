@@ -17,7 +17,7 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-4">
-          <div class="card card-body  rounded-0 mb-4">
+          <div class="card card-body bg-dark rounded-0 mb-4">
             <h1>
               <span class="material-icons"> grid_view </span>
               DTasksapp
@@ -30,39 +30,24 @@
             <span id="account"></span>
           </div>
 
-          <form id="taskForm" class="card card-body" style="color: yellow;">
+          <form id="taskForm" class="card card-body bg-dark">
             <h4>Save a Task</h4>
             <input
               type="text"
               id="title"
-              class="form-control border-0 rounded-0 text-light my-4"
-              placeholder="Escriba una tarea"
+              class="form-control bg-dark border-0 rounded-0 text-light my-4"
+              placeholder="Write a Task"
               autofocus
-              
             />
             <textarea
               id="description"
               rows="2"
-              class="form-control border-0 rounded-0 text-light my-4"
-              placeholder="description"
+              class="form-control bg-dark border-0 rounded-0 text-light my-4"
+              placeholder="I have to do ...."
             ></textarea>
             <button class="btn btn-primary">save</button>
           </form>
         </div>
-        <!-- Formulario de búsqueda por ID -->
-<form id="searchForm" class="card card-body" style="color: yellow;">
-  <h4>Search Task by ID</h4>
-
-  <input
-      type="text"
-      id="taskId"
-      class="form-control border-0 rounded-0 text-light my-4"
-      placeholder="Enter Task ID"
-  />
-
-  <button type="button" class="btn btn-primary" onclick="App.searchTaskById()">Search</button>
-</form>
-
         <div class="col-md-8">
           <div id="tasksList"></div>
         </div>
@@ -70,7 +55,7 @@
     </div>
 
     <!-- <script src="/libs/web3/dist/web3.min.js"></script> -->
-    <script src="./libs/@truffle/contract/browser-dist/truffle-contract.min.js"></script>
+    <script src="/libs/@truffle/contract/browser-dist/truffle-contract.min.js"></script>
     <script src="./app.js"></script>
     <script src="./ui.js"></script>
   </body>

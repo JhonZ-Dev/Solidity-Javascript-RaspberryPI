@@ -1,49 +1,64 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-//primer contrato
 contract TasksContract {
-    uint public tasksCounter = 0;
-    constructor(){
-        createTask("ejemploID", "hayquehaceralgo");
-    }
-    event TaskCreated(
-        uint id,
-        string title,
-        string description,
-        bool done,
-        uint createdAt
-    );
-    event TaskToggleDone(uint id, bool done);
-    struct Task{
+    uint256 public tasksCounter = 0;
+
+    struct Task {
         uint256 id;
         string title;
         string description;
         bool done;
         uint256 createdAt;
     }
-    mapping (uint256 =>Task) public tasks;
 
-    //funciones para interactuar con los datos;
-    function createTask(string memory _title,string memory _description) public{
-        tasksCounter++;
-        tasks[tasksCounter] = Task(tasksCounter,_title,_description,false, block.timestamp);
-        emit TaskCreated(tasksCounter,_title, _description, false, block.timestamp);
+    event TaskCreated(
+        uint256 id,
+        string title,
+        string description,
+        bool done,
+        uint256 createdAt
+    );
+    event TaskToggledDone(uint256 id, bool done);
+
+    mapping(uint256 => Task) public tasks;
+
+    constructor() {
+        createTask("my first task", "my first description");
     }
 
-    function toggleDone(uint _id) public{
-       Task memory _task = tasks[_id];
-       _task.done = !_task.done;
-       tasks[_id] = _task;
-       emit TaskToggleDone(_id, _task.done);
-    }
-    function taskExists(string memory _idTarjeta) public view returns (bool) {
-    for (uint i = 1; i <= tasksCounter; i++) {
-        if (keccak256(bytes(tasks[i].idTarjeta)) == keccak256(bytes(_idTarjeta))) {
-            return true;
+function createTask(string memory _title, string memory _description) public {
+    bool titleExists = false;
+    for (uint256 i = 1; i <= tasksCounter; i++) {
+        if (keccak256(abi.encodePacked(tasks[i].title)) == keccak256(abi.encodePacked(_title))) {
+            titleExists = true;
+            break;
         }
     }
-    return false;
+    require(!titleExists, "Task with this title already exists");
+
+    tasksCounter++;
+    tasks[tasksCounter] = Task(
+        tasksCounter,
+        _title,
+        _description,
+        false,
+        block.timestamp
+    );
+    emit TaskCreated(
+        tasksCounter,
+        _title,
+        _description,
+        false,
+        block.timestamp
+    );
 }
 
+
+    function toggleDone(uint256 _id) public {
+        Task memory _task = tasks[_id];
+        _task.done = !_task.done;
+        tasks[_id] = _task;
+        emit TaskToggledDone(_id, _task.done);
+    }
 }
